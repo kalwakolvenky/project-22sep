@@ -101,6 +101,14 @@ resource "aws_instance" "web-1" {
     }
 }
 
+terraform {
+  backend "s3" {
+    bucket = "devops-backend"
+    key    = "myterraform.tfstate"
+    region = "us-east-1"
+  }
+}
+
 # resource "aws_subnet" "subnet2-public" {
 #     vpc_id = "${aws_vpc.default1.id}"
 #     cidr_block = "${var.subnet_cidr1}"
