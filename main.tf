@@ -59,6 +59,11 @@ resource "aws_route_table" "r" {
   }
 }
 
+resource "aws_route_table_association" "terraform-public" {
+    subnet_id = "${aws_subnet.subnet1-public.id}"
+    route_table_id = "${aws_route_table.r.id}"
+}
+
 resource "aws_security_group" "allow_tls" {
   name        = "allow_tls"
   description = "Allow TLS inbound traffic"
